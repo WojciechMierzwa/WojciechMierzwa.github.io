@@ -133,6 +133,7 @@
 			<div class="jumbotron">
 				<h1>Projekt 1</h1>
 				<p>Miejsce na projekt laboratoryjny</p>
+				<div id="main-page-sub"></div>
 
 				<!--Ćwiczenie wstępne-->
 				<script defer>
@@ -146,15 +147,15 @@
 				<script>
 
 					const animals = ['pies','kot','łoś','jeleń', 'dzik'];
-					alert(animals[0]);
+					alert("Element pierwszy tablicy: " +animals[0]);
 				
 					animals[animals.length-1] = 'świnia';
 					alert(animals[animals.length-1]);
 					alert("Skład tablicy animals: "+ animals);
 				
 
-					animals[6] = 'wieloryb';
-					alert(animals[5]);
+					animals[5] = 'wieloryb';
+					alert("Element animals[5]: "+ animals[5]);
 
 					animals[animals.length] = 'manat';
 
@@ -181,7 +182,7 @@
 				<script>
 					const divTag = document.getElementsByTagName('div').length;
 					const h1Tag = document.getElementsByTagName('h1').length;
-					let message = "Na stronie znajduje się " + divTag + " znaczników div i " + h1Tag + " nagłówków h1.";
+					let message = "Na stronie znajduje się " + divTag + " znaczników div, " + h1Tag + " nagłówków h1";
 					document.getElementById('elementCount').innerHTML = message;
 				</script>
 				<section id="main-page">
@@ -192,47 +193,52 @@
 
 				<!--zad4-->
 				<script>
+					const form = ['Imię', 'Nazwisko', 'Indeks', 'Kod pocztowy', 'Miejscowość', 'Nr budynku', 'Województwo', 'Kraj'];
+					const personalData = ['Wojciech', 'Mierzwa', '20858', '82-300', 'Przezmark', '35H', 'warmińsko-mazurskie', 'Polska'];
+
 					const mainPage = document.getElementById('main-page');
+
 					const paragraph1 = document.createElement('p');
 					const paragraph2 = document.createElement('p');
-					const personalData = ['Wojciech', 'Mierzwa', 'Elbląg', '20858', 'Polska'];
-					paragraph1.innerHTML = "Imię i nazwisko: " + personalData[0] + " " + personalData[1];
-					paragraph2.innerHTML = "Miasto: " + personalData[2];
-			
+
+					paragraph1.textContent = "Imię: " + personalData[0];
+					paragraph2.textContent = "Nazwisko: " + personalData[1];
 
 					mainPage.appendChild(paragraph1);
 					mainPage.appendChild(paragraph2);
-			
 
-					const halfLength = Math.floor(personalData.length / 2); 
+
+					const halfLength = Math.floor(personalData.length / 2);
 					let i = 0;
-					let whileOutput = "<p>Połowa elementów z tablicy (while):<br>";
+					let whileOutput = "<div><p>Połowa elementów z tablicy (while):<br>";
+					
 					while (i < halfLength) {
-						whileOutput += personalData[i] + "<br>";
-						i++;
+					    whileOutput += form[i] + ": " + personalData[i] + "<br>";
+					    i++;
 					}
-					whileOutput += "</p>";
+					whileOutput += "</p></div>";
 					mainPage.innerHTML += whileOutput;
-			
 
 					let forOutput = "<p>Połowa elementów z tablicy (for):<br>";
 					for (let i = 0; i < halfLength; i++) {
-						forOutput += personalData[i] + "<br>";
+					    forOutput += form[i] + ": " + personalData[i] + "<br>";
 					}
 					forOutput += "</p>";
 					mainPage.innerHTML += forOutput;
-			
 
+				
 					function showData() {
-
-						const name = document.querySelector('#main-page p:nth-child(2)').textContent;
-						const city = document.querySelector('#main-page p:nth-child(3)').textContent;
-			
-
-						alert("Twoje dane:\n" + name + "\n" + city);
+						msg = "";
+						i=0;
+						for(i=0; i<personalData.length; i++){
+							msg += form[i]+": "+personalData[i]+"\n";
+						}
+						alert(msg);
 					}
+
 				</script>
-					
+
+				
 
 			</div>
 		</div>
@@ -245,6 +251,48 @@
 				<h1>Projekt 2</h1>
 				
 				<p>Miejsce na projekt laboratoryjny</p>
+
+
+				<!--zad5-->
+				<script>
+					const questions = [
+					    ['Jak nazywa się najmłodsza siostra Ross’a?', 'Monica'],
+					    ['Która postać jest najstarsza w grupie?', 'Ross'],
+					    ['Jaką profesję ma Chandler Bing?', 'Specjalista ds. reklamy'],
+					    ['Jak nazywa się pies Rachel?', 'Daisy'],
+					    ['Który sezon kończy się na tym, że Monica i Chandler adoptują dzieci?', 'Sezon 10']
+					];
+
+					let score = 0; 
+					let currentQuestion = 0; 
+
+					alert("Quiz znajomości serialu Friends");
+					
+					function displayQuestion() {
+					    if (currentQuestion < questions.length) {
+					        const question = prompt(questions[currentQuestion][0]);
+					        checkAnswer(question);
+					    } else {
+					        alert("Koniec quizu! Twój wynik to: " + score + "/" + questions.length);
+					    }
+					}
+
+				
+					function checkAnswer(answer) {
+					    if (answer.toLowerCase() === questions[currentQuestion][1].toLowerCase()) {
+					        alert('Prawidłowa odpowiedź!');
+					        score++;
+					    } else {
+					        alert('Błąd. Prawidłowa odpowiedź to: ' + questions[currentQuestion][1]);
+					    }
+					    currentQuestion++;
+					    displayQuestion(); 
+					}
+
+					displayQuestion();
+
+				</script>
+		
 				
 			</div>
 		</div>
