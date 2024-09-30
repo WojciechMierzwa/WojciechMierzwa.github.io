@@ -132,14 +132,61 @@
 		<div class="container">
 			<div class="jumbotron">
 				<h1>Projekt 1</h1>
-				<script>
+				<p>Miejsce na projekt laboratoryjny</p>
+				<script defer>
 					let name = prompt('Jak masz na imię?', '');
 				   </script>
-				   <script>
+				<script defer>
 					document.write('<p>Ćw. 1. Witaj, ' + name + '</p>');
-				   </script>
+				</script>
+				
+				<!--zad1-->
+				<script>
+					const tablica = [ 'Wojciech Mierzwa',
+					'ul. Grunwaldzka 45',
+					'82-300',
+					'+48 123 456 234'
+					];
 
-				<p>Miejsce na projekt laboratoryjny</p>
+					alert(tablica[0]);
+				</script>
+				<script>
+					tablica[tablica.length-1] = '+48 323 324 423';
+					alert(tablica[tablica.length-1]);
+				</script>
+
+				<script>
+					tablica[5] = 'Powiat elbaski';
+					alert(tablica[5]);
+				</script>
+				<script>
+					tablica[tablica.length] = 'Warminsko-Mazurskie';
+					alert(tablica);
+				</script>
+
+				<script>
+					tablica.push('mail@wp.pl', 'mail@gmail.pl', 'nowy10', 'nowy11');
+					alert(tablica);
+				</script>
+
+				<script>
+					tablica.unshift('UNSHIFT1', 'UNSHIFT2');
+					alert(tablica);
+				</script>
+
+				<!--Zad2-->
+				<script>
+					nowaTablica = ['Andrzej','Antoni','Anastazja'];
+					document.write('<p>Pierwszy element to <strong>');
+					document.write(nowaTablica[0] + '</strong></p>');
+					document.write('<p>Ostatni element to <strong>');
+					document.write(nowaTablica[nowaTablica.length-1] + '</strong></p>');
+				</script>
+
+				<script>
+					
+				</script>
+					
 
 			</div>
 		</div>
