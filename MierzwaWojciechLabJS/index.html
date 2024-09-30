@@ -193,6 +193,54 @@
 					let message = "Na stronie znajduje się " + divTag + " znaczników div i " + h1Tag + " nagłówków h1.";
 					document.getElementById('elementCount').innerHTML = message;
 				</script>
+				<section id="main-page">
+					<h1>Dane użytkownika</h1>
+				</section>
+			
+				<button onclick="showData()">Pokaż dane studenta</button>
+
+				<!--zad4-->
+				<script>
+					const mainPage = document.getElementById('main-page');
+					const paragraph1 = document.createElement('p');
+					const paragraph2 = document.createElement('p');
+					const personalData = ['Wojciech', 'Mierzwa', 'Elbląg', '20858', 'Polska'];
+					paragraph1.innerHTML = "Imię i nazwisko: " + personalData[0] + " " + personalData[1];
+					paragraph2.innerHTML = "Miasto: " + personalData[2];
+			
+
+					mainPage.appendChild(paragraph1);
+					mainPage.appendChild(paragraph2);
+			
+
+					const halfLength = Math.floor(personalData.length / 2); 
+					let i = 0;
+					let whileOutput = "<p>Połowa elementów z tablicy (while):<br>";
+					while (i < halfLength) {
+						whileOutput += personalData[i] + "<br>";
+						i++;
+					}
+					whileOutput += "</p>";
+					mainPage.innerHTML += whileOutput;
+			
+
+					let forOutput = "<p>Połowa elementów z tablicy (for):<br>";
+					for (let i = 0; i < halfLength; i++) {
+						forOutput += personalData[i] + "<br>";
+					}
+					forOutput += "</p>";
+					mainPage.innerHTML += forOutput;
+			
+
+					function showData() {
+
+						const name = document.querySelector('#main-page p:nth-child(2)').textContent;
+						const city = document.querySelector('#main-page p:nth-child(3)').textContent;
+			
+
+						alert("Twoje dane:\n" + name + "\n" + city);
+					}
+				</script>
 					
 
 			</div>
