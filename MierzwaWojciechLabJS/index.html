@@ -133,7 +133,7 @@
 			<div class="jumbotron">
 				<h1>Projekt 1</h1>
 				<p>Miejsce na projekt laboratoryjny</p>
-				<div id="main-page-sub"></div>
+				<div id="main-page"></div>
 
 				<!--Ćwiczenie wstępne-->
 				<script defer>
@@ -187,6 +187,7 @@
 				</script>
 				<section id="main-page">
 					<h1>Dane użytkownika</h1>
+					<div id="user-data"></div>
 				</section>
 			
 				<button onclick="showData()">Pokaż dane studenta</button>
@@ -196,17 +197,18 @@
 					const form = ['Imię', 'Nazwisko', 'Indeks', 'Kod pocztowy', 'Miejscowość', 'Nr budynku', 'Województwo', 'Kraj'];
 					const personalData = ['Wojciech', 'Mierzwa', '20858', '82-300', 'Przezmark', '35H', 'warmińsko-mazurskie', 'Polska'];
 
-					const mainPage = document.getElementById('main-page');
+					const mainPage = document.getElementById('user-data');
 
 					const paragraph1 = document.createElement('p');
 					const paragraph2 = document.createElement('p');
-
-					paragraph1.textContent = "Imię: " + personalData[0];
-					paragraph2.textContent = "Nazwisko: " + personalData[1];
+					
+					
+					paragraph1.textContent = form[0]+ ": " + personalData[0];
+					paragraph2.textContent = form[1]+ ": "+ personalData[1];
 
 					mainPage.appendChild(paragraph1);
 					mainPage.appendChild(paragraph2);
-
+					
 
 					const halfLength = Math.floor(personalData.length / 2);
 					let i = 0;
@@ -269,20 +271,18 @@
     				let score = 0; 
     				let currentQuestion = 0; 
 
-    				// Display the first question
     				function displayQuestion() {
     				    if (currentQuestion < questions.length) {
     				        document.getElementById('quiz-question').innerText = questions[currentQuestion][0];
-    				        document.getElementById('user-answer').value = ''; // Clear the input for new answer
-    				        document.getElementById('quiz-result').innerText = ''; // Clear previous result
+    				        document.getElementById('user-answer').value = '';
+    				        document.getElementById('quiz-result').innerText = '';
     				    } else {
     				        document.getElementById('quiz-question').innerText = 'Koniec quizu! Twój wynik to: ' + score + '/' + questions.length;
-    				        document.getElementById('user-answer').style.display = 'none'; // Hide the input
-    				        document.querySelector('button').style.display = 'none'; // Hide the button
+    				        document.getElementById('user-answer').style.display = 'none';
+    				        document.querySelector('button').style.display = 'none';
     				    }
     				}
 		
-    				// Check the user's answer
     				function submitAnswer() {
     				    const userAnswer = document.getElementById('user-answer').value.trim();
 					
@@ -293,8 +293,8 @@
     				        document.getElementById('quiz-result').innerText = 'Błąd. Prawidłowa odpowiedź to: ' + questions[currentQuestion][1];
     				    }
 					
-    				    currentQuestion++; // Move to the next question
-    				    setTimeout(displayQuestion, 1500); // Wait 1.5 seconds before showing the next question
+    				    currentQuestion++; 
+    				    setTimeout(displayQuestion, 1500); 
     				}
 					displayQuestion();
 				</script>
