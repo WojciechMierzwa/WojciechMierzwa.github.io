@@ -249,51 +249,55 @@
 		<div class="container">
 			<div class="jumbotron">
 				<h1>Projekt 2</h1>
-				
 				<p>Miejsce na projekt laboratoryjny</p>
 
+				<h2>Quiz znajomości serialu Friends</h2>
+				<div id="quiz-question" class="quiz-question"></div>
+				<input type="text" id="user-answer" placeholder="Twoja odpowiedź">
+				<button onclick="submitAnswer()">Odpowiedz</button>
+				<div id="quiz-result" class="quiz-result"></div>
 
-				<!--zad5-->
 				<script>
-					const questions = [
-					    ['Jak nazywa się najmłodsza siostra Ross’a?', 'Monica'],
-					    ['Która postać jest najstarsza w grupie?', 'Ross'],
-					    ['Jaką profesję ma Chandler Bing?', 'Specjalista ds. reklamy'],
-					    ['Jak nazywa się pies Rachel?', 'Daisy'],
-					    ['Który sezon kończy się na tym, że Monica i Chandler adoptują dzieci?', 'Sezon 10']
-					];
+    				const questions = [
+    				    ['Jak nazywa się najmłodsza siostra Ross’a?', 'Monica'],
+    				    ['Która postać jest najstarsza w grupie?', 'Ross'],
+    				    ['Jaką profesję ma Chandler Bing?', 'Specjalista ds. reklamy'],
+    				    ['Jak nazywa się pies Rachel?', 'Daisy'],
+    				    ['Który sezon kończy się na tym, że Monica i Chandler adoptują dzieci?', 'Sezon 10']
+    				];
 
-					let score = 0; 
-					let currentQuestion = 0; 
+    				let score = 0; 
+    				let currentQuestion = 0; 
 
-					alert("Quiz znajomości serialu Friends");
-					
-					function displayQuestion() {
-					    if (currentQuestion < questions.length) {
-					        const question = prompt(questions[currentQuestion][0]);
-					        checkAnswer(question);
-					    } else {
-					        alert("Koniec quizu! Twój wynik to: " + score + "/" + questions.length);
-					    }
-					}
-
-				
-					function checkAnswer(answer) {
-					    if (answer.toLowerCase() === questions[currentQuestion][1].toLowerCase()) {
-					        alert('Prawidłowa odpowiedź!');
-					        score++;
-					    } else {
-					        alert('Błąd. Prawidłowa odpowiedź to: ' + questions[currentQuestion][1]);
-					    }
-					    currentQuestion++;
-					    displayQuestion(); 
-					}
-
-					displayQuestion();
-
-				</script>
+    				// Display the first question
+    				function displayQuestion() {
+    				    if (currentQuestion < questions.length) {
+    				        document.getElementById('quiz-question').innerText = questions[currentQuestion][0];
+    				        document.getElementById('user-answer').value = ''; // Clear the input for new answer
+    				        document.getElementById('quiz-result').innerText = ''; // Clear previous result
+    				    } else {
+    				        document.getElementById('quiz-question').innerText = 'Koniec quizu! Twój wynik to: ' + score + '/' + questions.length;
+    				        document.getElementById('user-answer').style.display = 'none'; // Hide the input
+    				        document.querySelector('button').style.display = 'none'; // Hide the button
+    				    }
+    				}
 		
-				
+    				// Check the user's answer
+    				function submitAnswer() {
+    				    const userAnswer = document.getElementById('user-answer').value.trim();
+					
+    				    if (userAnswer.toLowerCase() === questions[currentQuestion][1].toLowerCase()) {
+    				        document.getElementById('quiz-result').innerText = 'Prawidłowa odpowiedź!';
+    				        score++;
+    				    } else {
+    				        document.getElementById('quiz-result').innerText = 'Błąd. Prawidłowa odpowiedź to: ' + questions[currentQuestion][1];
+    				    }
+					
+    				    currentQuestion++; // Move to the next question
+    				    setTimeout(displayQuestion, 1500); // Wait 1.5 seconds before showing the next question
+    				}
+					displayQuestion();
+				</script>
 			</div>
 		</div>
 	</section>
