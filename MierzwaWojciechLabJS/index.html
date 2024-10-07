@@ -24,6 +24,54 @@
 <script src="js/jquery.easing.1.3.min.js"></script>
 <script src="js/jquery.easing.compatibility.js"></script>
 
+<script>
+	let score = 0;
+let q = 0;
+
+const questions = [
+    ['Jakie jest największe państwo na świecie pod względem powierzchni?', 'Rosja'],
+    ['Który kraj ma największą populację na świecie?', 'Chiny'],
+    ['Jakie jest najmniejsze państwo na świecie pod względem powierzchni?', 'Watykan'],
+    ['Które państwo w Ameryce Południowej ma największą powierzchnię?', 'Brazylia'],
+    ['Jakie jest oficjalne językowe państwo w którym znajduje się miasto Lizbona?', 'Portugalia'],
+    ['Który kraj jest nazywany "Krajem Kwitnącej Wiśni"?', 'Japonia'],
+    ['W którym kraju leży miasto Sydney?', 'Australia'],
+    ['Które państwo graniczy z Polską na wschodzie?', 'Ukraina'],
+    ['Jakie państwo ma najwięcej sąsiadów na świecie?', 'Chiny'],
+    ['Stolica jakiego państwa nazywa się Oslo?', 'Norwegia']
+];
+
+function quiz() {
+    let answer = document.getElementById('answer').value;
+
+    if (answer.toLowerCase() === questions[q][1].toLowerCase()) {
+        score++;
+        alert("Dobra odpowiedź!");
+    } else {
+        alert("Błędna odpowiedź! Poprawna odpowiedź to: " + questions[q][1]);
+    }
+    document.getElementById('currentScore').innerText = 'Wynik: ' + score + '/' + (q + 1);
+    q++;
+
+    if (q < questions.length) {
+        loadQuestion();
+    } else {
+        document.getElementById('question').innerText = 'Koniec quizu!';
+        document.getElementById('answer').style.display = 'none';
+        document.getElementById('quizButton').style.display = 'none';
+        document.getElementById('currentScore').innerText = 'Twój wynik: ' + score + '/10';
+    }
+}
+
+function loadQuestion() {
+    document.getElementById('question').innerText = questions[q][0];
+    document.getElementById('answer').value = '';
+}
+
+
+
+
+</script>
 
 </head>
 
@@ -74,7 +122,7 @@
 		</div>
 
 	</nav>
-
+<body onload="loadQuestion()">
 	<!-- Main container -->
 	<section id="main-page">
 		<div class="container">
@@ -134,173 +182,18 @@
 				<h1>Projekt 1</h1>
 				<p>Miejsce na projekt laboratoryjny</p>
 				<div id="main-page"></div>
-
-				<!--Ćwiczenie wstępne-->
-				<script defer>
-					let name = prompt('Jak masz na imię?', '');
-				   </script>
-				<script defer>
-					document.write('<p>Ćw. 1. Witaj, ' + name + '</p>');
-				</script>
-				
-				<!--zad1-->
-				<script>
-
-					const animals = ['pies','kot','łoś','jeleń', 'dzik'];
-					alert("Element pierwszy tablicy: " +animals[0]);
-				
-					animals[animals.length-1] = 'świnia';
-					alert(animals[animals.length-1]);
-					alert("Skład tablicy animals: "+ animals);
-				
-
-					animals[5] = 'wieloryb';
-					alert("Element animals[5]: "+ animals[5]);
-
-					animals[animals.length] = 'manat';
-
-					animals.push('pingwin','lew', 'koń', 'narwal', 'larwa');
-					alert("Skład tablicy animals po opercji push: "+ animals);
-
-					animals.unshift('kangur','motyl');
-					alert("Skład tablicy animals po operacji unshift: "+ animals);
-				</script>
-
-				<!--Zad2-->
-				<script>
-					names = ['Andrzej','Antoni','Anastazja'];
-					document.write('<p>Pierwszy element to <strong>');
-					document.write(names[0] + '</strong></p>');
-					document.write('<p>Ostatni element to <strong>');
-					document.write(names[names.length-1] + '</strong></p>');
-					names.unshift('Monika');
-					document.write('<p>Pierwszy element to <strong>');
-					document.write(names[0] + '</strong></p>');
-				</script>
-				<p id = "elementCount"></p>
-				<!--Zad3-->
-				<script>
-					const divTag = document.getElementsByTagName('div').length;
-					const h1Tag = document.getElementsByTagName('h1').length;
-					let message = "Na stronie znajduje się " + divTag + " znaczników div, " + h1Tag + " nagłówków h1";
-					document.getElementById('elementCount').innerHTML = message;
-				</script>
-				<section id="main-page">
-					<h1>Dane użytkownika</h1>
-					<div id="user-data"></div>
-				</section>
-			
-				<button onclick="showData()">Pokaż dane studenta</button>
-
-				<!--zad4-->
-				<script>
-					const form = ['Imię', 'Nazwisko', 'Indeks', 'Kod pocztowy', 'Miejscowość', 'Nr budynku', 'Województwo', 'Kraj'];
-					const personalData = ['Wojciech', 'Mierzwa', '20858', '82-300', 'Przezmark', '35H', 'warmińsko-mazurskie', 'Polska'];
-
-					const mainPage = document.getElementById('user-data');
-
-					const paragraph1 = document.createElement('p');
-					const paragraph2 = document.createElement('p');
-					
-					
-					paragraph1.textContent = form[0]+ ": " + personalData[0];
-					paragraph2.textContent = form[1]+ ": "+ personalData[1];
-
-					mainPage.appendChild(paragraph1);
-					mainPage.appendChild(paragraph2);
-					
-
-					const halfLength = Math.floor(personalData.length / 2);
-					let i = 0;
-					let whileOutput = "<div><p>Połowa elementów z tablicy (while):<br>";
-					
-					while (i < halfLength) {
-					    whileOutput += form[i] + ": " + personalData[i] + "<br>";
-					    i++;
-					}
-					whileOutput += "</p></div>";
-					mainPage.innerHTML += whileOutput;
-
-					let forOutput = "<p>Połowa elementów z tablicy (for):<br>";
-					for (let i = 0; i < halfLength; i++) {
-					    forOutput += form[i] + ": " + personalData[i] + "<br>";
-					}
-					forOutput += "</p>";
-					mainPage.innerHTML += forOutput;
-
-				
-					function showData() {
-						msg = "";
-						i=0;
-						for(i=0; i<personalData.length; i++){
-							msg += form[i]+": "+personalData[i]+"\n";
-						}
-						alert(msg);
-					}
-
-				</script>
-
-				
-
+				<h3>Quiz o wiedzy geograficznej</h3>
+				<h4 id="numberQuestion"></p>
+				<p id="question"></p>
+				<input type="text" id="answer" placeholder="Twoja odpowiedź">
+				<button id="quizButton" onclick="quiz()">Następne pytanie</button>
+				<p id="quiz"></p>
+				<p id="currentScore">Wynik: 0/0</p>
 			</div>
 		</div>
 	</section>
 
 
-	<section id="projekt2">
-		<div class="container">
-			<div class="jumbotron">
-				<h1>Projekt 2</h1>
-				<p>Miejsce na projekt laboratoryjny</p>
-
-				<h2>Quiz znajomości serialu Friends</h2>
-				<div id="quiz-question" class="quiz-question"></div>
-				<input type="text" id="user-answer" placeholder="Twoja odpowiedź">
-				<button onclick="submitAnswer()">Odpowiedz</button>
-				<div id="quiz-result" class="quiz-result"></div>
-
-				<script>
-    				const questions = [
-    				    ['Jak nazywa się najmłodsza siostra Ross’a?', 'Monica'],
-    				    ['Która postać jest najstarsza w grupie?', 'Ross'],
-    				    ['Jaką profesję ma Chandler Bing?', 'Specjalista ds. reklamy'],
-    				    ['Jak nazywa się pies Rachel?', 'Daisy'],
-    				    ['Który sezon kończy się na tym, że Monica i Chandler adoptują dzieci?', 'Sezon 10']
-    				];
-
-    				let score = 0; 
-    				let currentQuestion = 0; 
-
-    				function displayQuestion() {
-    				    if (currentQuestion < questions.length) {
-    				        document.getElementById('quiz-question').innerText = questions[currentQuestion][0];
-    				        document.getElementById('user-answer').value = '';
-    				        document.getElementById('quiz-result').innerText = '';
-    				    } else {
-    				        document.getElementById('quiz-question').innerText = 'Koniec quizu! Twój wynik to: ' + score + '/' + questions.length;
-    				        document.getElementById('user-answer').style.display = 'none';
-    				        document.querySelector('button').style.display = 'none';
-    				    }
-    				}
-		
-    				function submitAnswer() {
-    				    const userAnswer = document.getElementById('user-answer').value.trim();
-					
-    				    if (userAnswer.toLowerCase() === questions[currentQuestion][1].toLowerCase()) {
-    				        document.getElementById('quiz-result').innerText = 'Prawidłowa odpowiedź!';
-    				        score++;
-    				    } else {
-    				        document.getElementById('quiz-result').innerText = 'Błąd. Prawidłowa odpowiedź to: ' + questions[currentQuestion][1];
-    				    }
-					
-    				    currentQuestion++; 
-    				    setTimeout(displayQuestion, 1500); 
-    				}
-					displayQuestion();
-				</script>
-			</div>
-		</div>
-	</section>
 
 	<footer>
 		<div class="container" style="margin-top: 5%">
