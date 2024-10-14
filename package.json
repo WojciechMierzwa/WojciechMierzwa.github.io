@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Laboratorium3",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/WojciechMierzwa/WojciechMierzwa.github.io/issues"
   },
-  "homepage": "https://github.com/WojciechMierzwa/WojciechMierzwa.github.io#readme"
+  "homepage": "https://github.com/WojciechMierzwa/WojciechMierzwa.github.io#readme",
+  "dependencies": {
+    "string-width": "^7.2.0"
+  }
 }
