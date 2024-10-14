@@ -1,0 +1,19 @@
+{
+  "name": "wojciechmierzwa.github.io",
+  "version": "1.0.0",
+  "description": "Laboratorium3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/WojciechMierzwa/WojciechMierzwa.github.io.git"
+  },
+  "author": "Wojciech Mierzwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WojciechMierzwa/WojciechMierzwa.github.io/issues"
+  },
+  "homepage": "https://github.com/WojciechMierzwa/WojciechMierzwa.github.io#readme"
+}
