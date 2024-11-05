@@ -14,3 +14,101 @@
     font-size: 16px;
     color: #333;
 }
+.song-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f8ff; /* Jasnoniebieskie tło */
+    border: 1px solid #b0c4de; /* Kolor obramowania */
+}
+
+h1, h2, h3 {
+    color: #2e8b57; /* Zieleń */
+}
+
+p {
+    font-family: 'Arial', sans-serif; /* Czcionka */
+    line-height: 1.6; /* Wysokość linii */
+}
+
+span {
+    color: #4682b4; /* Niebieski tekst */
+}
+
+em {
+    color: #dc143c; /* Czerwony tekst dla kursywy */
+}
+
+u {
+    color: #8b008b; /* Fioletowy tekst dla podkreślenia */
+}
+
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: green;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.large-font {
+    font-size: 24px;
+}
+
+.medium-font {
+    font-size: 18px;
+}
+
+.small-font {
+    font-size: 12px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+
+.background-light {
+    background-color: lightblue;
+}
+
+.background-dark {
+    background-color: lightcoral;
+}
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: green;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.large-font {
+    font-size: 32px;
+}
+
+.medium-font {
+    font-size: 24px;
+}
+
+.small-font {
+    font-size: 16px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: yellow;
+}
