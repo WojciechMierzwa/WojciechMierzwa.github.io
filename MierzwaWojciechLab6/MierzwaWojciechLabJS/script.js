@@ -70,3 +70,95 @@ $(document).ready(function() {
 });
 
 
+//zad3
+$(document).ready(function() {
+    $('#btn1').click(function() {
+        const row = $('tbody tr').eq(0); 
+        toggleColor(row, $(this));
+    });
+
+    $('#btn2').click(function() {
+        const row = $('tbody tr').eq(1); 
+        toggleColor(row, $(this));
+    });
+
+    $('#btn3').click(function() {
+        const row = $('tbody tr').eq(2); 
+        toggleColor(row, $(this));
+    });
+
+    $('#btn4').click(function() {
+        const row = $('tbody tr').eq(3); 
+        toggleColor(row, $(this));
+    });
+
+    $('#btn5').click(function() {
+        const row = $('tbody tr').eq(4);
+        toggleColor(row, $(this));
+    });
+
+    $('#removeRow').click(function() {
+        $('tbody tr.selected').remove(); 
+    });
+
+    function toggleColor(row, button) {
+        if (button.data('toggled')) {
+            row.css('background-color', '');
+            button.css('background-color', '');
+            button.data('toggled', false);
+        } else {
+            row.css('background-color', 'lightgreen');
+            button.css('background-color', 'lightblue');
+            button.data('toggled', true);
+        }
+    }
+
+    $('#addRow').click(function() {
+        const newRowId = $('tbody tr').length + 1;
+        const newRow = `
+            <tr>
+                <td>${newRowId}</td>
+                <td>Element ${newRowId}</td>
+                <td>Opis elementu ${newRowId}</td>
+                <td>Typ ${Math.floor(Math.random() * 3) + 1}</td>
+                <td>Aktualny</td>
+                <td><input type="text" value="Tekst ${newRowId}"></td>
+            </tr>`;
+        $('tbody').append(newRow); 
+    });
+
+    $('#filterEven').click(function() {
+        $('tbody tr:even').css('background-color', 'lightyellow'); 
+    });
+
+    $('#filterOdd').click(function() {
+        $('tbody tr:odd').css('background-color', 'lightcoral'); 
+    });
+
+    $('#firstLast').click(function() {
+        $('tbody tr:first').css('background-color', 'lightblue'); 
+        $('tbody tr:last').css('background-color', 'lightblue');
+    });
+
+    $('#notSelector').click(function() {
+        $('tbody tr').not(':first').css('background-color', 'lightgray'); 
+    });
+
+    $('#containsText').click(function() {
+        $('tbody td').filter(function() {
+            return $(this).text().includes('A');
+        }).css('background-color', 'lightgreen'); 
+    });
+
+    $('#showHidden').click(function() {
+        $('tbody tr:hidden').show(); 
+    });
+
+    $('#hideRow').click(function() {
+        $('tbody tr.selected').hide(); 
+    });
+
+    $('tbody').on('click', 'tr', function() {
+        $(this).toggleClass('selected'); 
+    });
+});
