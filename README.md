@@ -7,6 +7,7 @@
 **Lab 9**: [Mierzwa Wojciech Lab JS](https://wojciechmierzwa.github.io/lab9/#/)  
 **Lab 10**: [Mierzwa Wojciech Lab JS](https://wojciechmierzwa.github.io/lab10)  
 **Lab 11**: [Mierzwa Wojciech Lab JS](https://wojciechmierzwa.github.io/lab11v2)  
+**Lab 12**: [Mierzwa Wojciech Lab JS](https://lab12-35p6.vercel.app/)
 
 ### Autor
 **Wojciech Mierzwa**  
